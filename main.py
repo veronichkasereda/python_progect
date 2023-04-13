@@ -1,4 +1,5 @@
 import telebot
+import requests
 from telebot import types  # для указание типов
 
 from config import BOT_TOKEN
@@ -73,7 +74,10 @@ def func(message):
 #тут в переменную picture мы кладем ссылку на фото, отправленное пользователем
     elif ("Ответ на задание 1" in message.text):
         picture = str(message.text)[19:]
-        print(picture)
+        p = requests.get(picture)
+        out = open("answers/img.jpg", "wb")
+        out.write(p.content)
+        out.close()
         bot.send_message(message.chat.id, text="Очень классно получилось!)")
     else:
         bot.send_message(message.chat.id,
