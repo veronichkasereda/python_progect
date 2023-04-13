@@ -71,7 +71,7 @@ def func(message):
         markup.add(button1, button2)
         bot.send_message(message.chat.id, text="Вы вернулись в главное меню", reply_markup=markup)
 
-#тут в переменную picture мы кладем ссылку на фото, отправленное пользователем
+#тут у нас сохраняется фотография, отправленная пользователем, под именем img.jpg в папке answers
     elif ("Ответ на задание 1" in message.text):
         picture = str(message.text)[19:]
         p = requests.get(picture)
